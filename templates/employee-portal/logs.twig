@@ -1,0 +1,42 @@
+{% requirePermission 'accessCp' %}
+
+{% extends '_layouts/employee-portal' %}
+
+{% import '_includes/macros' as macros %}
+
+{# Bulletins #}
+{% set bulletins = craft.entries.section('bulletins').requiresReading('1') %}
+
+{% block innerContent %}
+    <h1 class="h3">Unread Bulletin Logs</h1>
+    <p class="mb-3 lead">
+        These bulletins listed have not been read by the following employees.
+    </p>
+
+    {% if bulletins | length %}
+        {% for bulletin in bulletins.all() %}
+            {% set usersRead = craft.users.group('employees').relatedTo(bulletin).all() %}
+            {% set usersNotRead = craft.users.group('employees').id(['not'] | merge(usersRead) ) %}
+
+            {% if usersNotRead | length %}
+                <div class="bulletin">
+                    <h4 class="mb-1">{{ bulletin.title }}</h4>
+
+                    <ul class="list-inline bulletin__meta text-muted text-sm">
+                        <li class="list-inline-item">Posted on {{ bulletin.postDate.format('F j, Y') }}
+                    </ul>
+
+                    {% if usersNotRead | length %}
+                        {% for user in usersNotRead.all() %}
+                            <span class="badge badge-warning">{{ user.fullName }} ({{ user.username }})</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info">
+            There are currently no bulletins.
+        </div>
+    {% endif %}
+{% endblock %}

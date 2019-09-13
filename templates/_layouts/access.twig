@@ -1,0 +1,25 @@
+{% extends '_layouts/site' %}
+
+{% block body %}
+    <div class="access-layout">
+        <div class="access-layout__main">
+
+            <div class="access-layout__content">
+                <a rel="home" href="/" title="{{ siteName }}"
+                   itemprop="url">
+                    <img src="{{ siteUrl }}uploads/images/bluepoint-logo.png"
+                         alt="{{ siteName }} - Logo"
+                         class="img-fluid d-block logo mb-2 mx-auto"
+                    >
+                    <span class="sr-only">{{ siteName }}</span>
+                </a>
+
+                <div class="access-layout__inner">
+                    {% block content %}
+                        {# Nothing to see here #}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

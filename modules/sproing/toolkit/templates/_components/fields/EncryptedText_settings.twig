@@ -1,0 +1,19 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.checkboxField({
+    label: "Allow line breaks"|t('app'),
+    name: 'multiline',
+    checked: field.multiline,
+    toggle: 'initialRowsContainer'
+}) }}
+
+<div id="initialRowsContainer" class="nested-fields{% if not field.multiline %} hidden{% endif %}">
+    {{ forms.textField({
+        label: "Initial Rows"|t('app'),
+        id: 'initialRows',
+        name: 'initialRows',
+        value: field.initialRows,
+        size: 3,
+        errors: field.getErrors('initialRows')
+    }) }}
+</div>

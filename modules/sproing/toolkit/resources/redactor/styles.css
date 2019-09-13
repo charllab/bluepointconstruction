@@ -1,0 +1,25 @@
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.redactor-dropdown-item-small span {
+	font-size: 11px;
+}
+
+.redactor-dropdown-item-lead span {
+	font-size: 20px;
+  color: #666;
+}
+
+.redactor-styles .lead {
+	font-size: 1.25em;
+  color: #666;
+}
+
+.redactor-styles small {
+	font-size: 90%;
+}

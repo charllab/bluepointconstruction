@@ -1,0 +1,10 @@
+/.env
+/.idea
+vendor
+.DS_Store
+/node_modules
+/storage
+/templates/_layouts/base-dist.twig
+/public_html/cpresources
+/public_html/assets
+/public_html/uploads

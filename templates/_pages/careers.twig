@@ -1,0 +1,60 @@
+{% extends '_layouts/site' %}
+
+{% import '_includes/macros' as macros %}
+
+{% set careers = craft.entries.section('careers') %}
+
+{% block content %}
+    <main>
+        {% include '_includes/page-header' %}
+
+        <div class="white-page__border-bottom">
+            <div class="container py-4">
+                <div class="row justify-content-center">
+                    <div class="col-sm-10 col-xl-8 col-xxl-6">
+                        <h1 class="h2">{{ entry.title }}</h1>
+                        {% include '_includes/content-matrix' with { 'field' : entry.pageContent } %}
+
+                        <div class="py-2"></div>
+
+                        {% if careers | length %}
+                            {% for entry in careers.all() %}
+                                <div class="bulletin">
+                                    <h4 class="mb-1">{{ entry.title }}</h4>
+                                    <ul class="list-inline bulletin__meta text-muted text-sm">
+                                        <li class="list-inline-item">Posted on {{ entry.postDate.format('F j, Y') }}
+                                        {% if entry.expiryDate %}
+                                            <li class="list-inline-item">Expires on {{ entry.expiryDate.format('F j, Y') }}
+                                        {% endif %}
+                                    </ul>
+
+                                    {{ entry.description }}
+
+                                    {% if entry.files %}
+                                        <ul class="list-unstyled">
+                                            {% for file in entry.files.all() %}
+                                                <li><a target="_blank" href="{{ file.url }}">{{ file.title }} <i class="fas fa-external-link-alt"></i></a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+
+                                    {% if entry.type == 'default' %}
+                                        <a href="mailto:bluepoint@telus.net" class="btn btn-primary">Apply Now</a>
+                                    {% endif %}
+
+                                    {% if entry.urlLink %}
+                                        <a target="_blank" href="{{ entry.urlLink }}">{{ entry.urlLink }} <i class="fas fa-external-link-alt"></i></a>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="alert alert-info">
+                                There are currently no job postings.
+                            </div>
+                        {% endif %}
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- container -->
+        </div><!-- white-page__border-bottom -->
+    </main>
+{% endblock %}

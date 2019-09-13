@@ -1,0 +1,63 @@
+{% extends '_layouts/access' %}
+
+{% import "_includes/forms" as forms %}
+
+{% block content %}
+    <h2 class="h4">Registration</h2>
+    <p>Complete the form below to sign up and to access our online employee portal.</p>
+    <br />
+    <form method="post" class="validate"
+          accept-charset="UTF-8">
+
+        {{ csrfInput() }}
+
+        {{ redirectInput('employee-registration/success') }}
+
+        <input type="hidden" name="action" value="users/save-user">
+
+        {% if errorMessage is defined %}
+            <div class="alert alert-danger"
+                 role="alert">
+                <strong>Attention!</strong> {{ errorMessage }}
+            </div>
+        {% endif %}
+
+        {{ forms.textField({
+            label: "First Name",
+            id: "firstName",
+            name: "firstName",
+            required: true
+        }) }}
+
+        {{ forms.textField({
+            label: "Last Name",
+            id: "lastName",
+            name: "lastName",
+            required: true
+        }) }}
+
+        {{ forms.textField({
+            label: "Email Address",
+            id: "email",
+            name: "email",
+            type: "email",
+            required: true,
+            errors: user is defined ? user.getErrors('email'),
+            autocomplete: false
+        }) }}
+
+        {{ forms.passwordField({
+            label: "Password",
+            id: "password",
+            name: "password",
+            required: true,
+            errors: user is defined ? user.getErrors('password')
+        }) }}
+
+        <br />
+
+        <button type="submit"
+                class="btn btn-primary btn-block btn-lg">Sign Up
+        </button>
+    </form>
+{% endblock %}

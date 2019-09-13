@@ -1,0 +1,23 @@
+{% import "_includes/macros" as macros %}
+
+<div class="content-matrix">
+    {% for block in field.all() %}
+        {% switch block.type.handle %}
+
+            {% case 'text' %}
+                {{ block.text }}
+
+            {% case 'spacer' %}
+                <div class="py-2"></div>
+
+            {% case 'image' %}
+                <img class="img-fluid" src="{{ block.image.one().getUrl('large') }}" alt="{{ block.image.title }}" />
+
+            {% case 'embed' %}
+                <div class="embed-responsive embed-responsive-16by9">
+                    {{ block.embedCode | raw }}
+                </div>
+
+        {% endswitch %}
+    {% endfor %}
+</div>

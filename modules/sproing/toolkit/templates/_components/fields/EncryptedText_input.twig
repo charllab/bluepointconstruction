@@ -1,0 +1,15 @@
+{% import "_includes/forms" as forms %}
+{% if field.multiline %}
+    {{ forms.textarea({
+        id: name,
+        name: name,
+        value: value,
+        rows: field.initialRows
+    }) }}
+{% else %}
+    {{ forms.textField({
+        id: name,
+        name: name,
+        value: value
+    }) }}
+{% endif %}

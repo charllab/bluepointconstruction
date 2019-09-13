@@ -1,0 +1,18 @@
+{
+    "linkSize": 100,
+    "pasteImages": false,
+    "pastePlainText": true,
+    "structure": true,
+    "buttons": [
+        "formatting",
+        "bold",
+        "italic",
+        "deleted",
+        "underline",
+        "unorderedlist",
+        "orderedlist",
+        "link"
+    ],
+    "formatting": ["p", "h2", "h3", "h4", "h5"],
+    "toolbarFixed": true
+}

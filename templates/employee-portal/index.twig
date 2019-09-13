@@ -1,0 +1,23 @@
+{% extends '_layouts/employee-portal' %}
+
+{% import '_includes/macros' as macros %}
+
+{# Bulletins #}
+{% set query = craft.entries.section('bulletins').limit(10) %}
+{% paginate query as pageInfo, bulletins %}
+
+{% block innerContent %}
+    <h1 class="h3 mb-3">Bulletins</h1>
+
+    {% if bulletins | length %}
+        {% for bulletin in bulletins %}
+            {% include 'employee-portal/_bulletin-list-item' %}
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info">
+            There are currently no bulletins.
+        </div>
+    {% endif %}
+
+    {% include 'employee-portal/_pagination' %}
+{% endblock %}

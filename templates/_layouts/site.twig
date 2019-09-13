@@ -1,0 +1,14 @@
+{% extends "_layouts/base-dist" %}
+
+{% set bodyClassGenerated =  craft.app.request.getSegment(1) ? 'page--' ~ craft.app.request.getSegment(1) : 'page--home' %}
+{% set segments = craft.app.request.getSegments() %}
+
+{% for segment in segments | slice(1) %}
+    {% set bodyClassGenerated = bodyClassGenerated ~ ' page--' ~ segment %}
+{% endfor %}
+
+{% if bodyClass is not defined %}
+    {% set bodyClass = bodyClassGenerated %}
+{% else %}
+    {% set bodyClass = bodyClassGenerated ~ ' ' ~ bodyClass %}
+{% endif %}

@@ -1,0 +1,821 @@
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+*, *:after, *:before {
+  outline: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.mb-small {
+  margin-bottom: $spacer*.25;
+}
+
+.mb-half {
+  margin-bottom: $spacer*.5;
+}
+
+.z-index-1 {
+  z-index: 1;
+}
+
+.z-index-10 {
+  z-index: 10;
+}
+
+.z-index-20 {
+  z-index: 20;
+}
+
+.z-index-30 {
+  z-index: 30;
+}
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  Background Stuff ++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.background--tint {
+  background-color: rgba($body, .7);
+}
+
+.banner__color-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .45);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  @include media-breakpoint-up(lg) {
+    left: 50%;
+    width: 50%;
+  }
+}
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  Page Splitters  +++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.angle-polygon {
+  position: absolute;
+  top: -$spacer*.5;
+  bottom: -$spacer*.5;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: ($spacer)+10;
+  background-color: white;
+  clip-path: polygon(0 25%, 100% 0%, 100% 75%, 0% 100%);
+}
+
+.white-page__border-bottom {
+  border-bottom: 1px solid #ccc;
+}
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  White Borders  ++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.white-border--top {
+  border-top: $spacer solid white;
+}
+
+.white-border--bottom {
+  border-bottom: $spacer solid white;
+}
+
+.white-border--bottom-md-down {
+  @include media-breakpoint-down(md) {
+    border-bottom: $spacer solid white;
+  }
+}
+
+
+.white-border--left--lg-up {
+  @include media-breakpoint-up(lg) {
+    border-left: $spacer solid white;
+  }
+}
+
+.white-border--half--left--lg-up {
+  @include media-breakpoint-up(lg) {
+    border-left: $spacer/2 solid white;
+  }
+}
+.white-border--half--right--lg-up {
+  @include media-breakpoint-up(lg) {
+    border-right: $spacer/2 solid white;
+  }
+}
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  Ping Pong Blocks  +++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.ping-pong__wrapper:nth-child(odd) {
+  @include media-breakpoint-up(md) {
+    .ping-pong__text {
+      padding-left: $spacer;
+    }
+  }
+}
+
+.ping-pong__wrapper:nth-child(even) {
+  flex-direction: row-reverse;
+
+  .ping-pong__text {
+    @include media-breakpoint-up(md) {
+      text-align: right;
+      padding-right: $spacer;
+    }
+  }
+}
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  Project Listing +++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+.previuos-projects__content--max-width {
+  @include media-breakpoint-up(lg) {
+    max-width: 445.98px;
+  }
+  @include media-breakpoint-up(xl) {
+    max-width: 549.98px;
+  }
+  @include media-breakpoint-up(xxl) {
+    max-width: 699.98px;
+  }
+  @include media-breakpoint-up(xxxl) {
+    max-width: 819.98px;
+  }
+  @include media-breakpoint-up(xxxxl) {
+    max-width: 959.98px;
+  }
+}
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  Interactive  ++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+.block-link__trigger {
+  position: relative;
+}
+
+.block-link__image {
+  display: block;
+}
+
+.block-link__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #008CBA;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
+
+.block-link__trigger:hover .block-link__overlay {
+  height: 4.3rem;
+}
+
+.interactive-block__title {
+  text-transform: capitalize;
+  font-size: 1.3rem;
+  line-height: 1;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  List Styling ++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.services-list-icon {
+  line-height: 2;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 1.15rem;
+    width: 1.15rem;
+    background-image: url('../images/services-list-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 2em;
+    margin-bottom: -.15rem;
+  }
+}
+
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  Typography ++++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Responsive font sizing
+html {
+  font-size: 16px;
+}
+
+// Sets font size to 16px on form elements to prevent input zoom on mobile devices
+@include media-breakpoint-down(sm) {
+  .form-control {
+    font-size: $font-size-base * 1.075;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  html {
+    font-size: 18px;
+  }
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: $font-family-base;
+  -webkit-overflow-scrolling: touch;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  margin-bottom: $spacer*.5;
+  line-height: 1.2;
+  color: $headings-color;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+h1, .h1 {
+  font-size: 2.25rem;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 3rem;
+  }
+}
+
+h2, .h2 {
+  font-size: 1.75rem;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 2.5rem;
+  }
+}
+
+h3, .h3 {
+  font-size: 1.5rem;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 2rem;
+  }
+}
+
+h4, .h4 {
+  font-size: 1.25rem;
+  text-transform: none;
+  color: $gray-600;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1.75rem;
+  }
+}
+
+h5, .h5 {
+  font-size: 1rem;
+  text-transform: none;
+  color: $gray-600;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1.25rem;
+  }
+}
+
+.lead {
+  font-size: 1.2rem;
+  color: $gray-600;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+.list-inline-item:not(:last-child) {
+  margin-right: 1.25rem;
+}
+
+.strong {
+  font-weight: 700;
+}
+
+.color-dark {
+  color: $navbar-light-color;
+}
+
+.text__xxxl--max-width {
+  @include media-breakpoint-up(xxxl) {
+    max-width: 412px;
+  }
+}
+
+.text-sm {
+  font-size: 90%;
+}
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  Nav +++++++++++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.dropdown-menu {
+  border-radius: 0;
+  @include media-breakpoint-down(xl) {
+    padding-top: $spacer*.35;
+    padding-bottom: $spacer*.35;
+    border-color: white;
+    border-top: 2px dashed #eee;
+    border-bottom: 2px dashed #eee;
+  }
+  @include media-breakpoint-up(xl) {
+    border: 2px solid darken($primary, 5%);
+  }
+}
+
+.dropdown-item {
+  @include media-breakpoint-down(xl) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+.navbar {
+  padding: $spacer*.75;
+  @include media-breakpoint-up(lg) {
+    padding: $spacer*.75 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.navbar-main-logo {
+  height: auto;
+  width: 275px;
+
+  @include media-breakpoint-down(md) {
+    height: auto;
+    width: 200px;
+  }
+}
+
+#main-menu {
+  .nav-link {
+    font-weight: 700;
+    @include media-breakpoint-up(lg) {
+      padding-left: $spacer*.75;
+      padding-right: $spacer*.75;
+    }
+  }
+
+  .nav-link,
+  .dropdown-item {
+    font-family: $font-family-serif;
+    font-size: 1rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+}
+
+.navbar-light .navbar-toggler {
+  border-color: transparent;
+  font-size: 2rem;
+}
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  General +++++++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.banner__overflow-hider {
+  overflow: hidden;
+}
+
+.banner__z-indexer {
+  z-index: 1;
+}
+
+.banner {
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: cover;
+  min-height: 200px;
+}
+
+.page__devider {
+  &::after {
+    content: "";
+    height: 4px;
+    background-color: $line;
+    width: 55%;
+    display: block;
+    @include media-breakpoint-up(md) {
+      width: 66%;
+    }
+  }
+}
+
+.bg-img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  Front Page  +++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.full-hero__wrapper {
+  position: relative;
+  width: 100%;
+  color: $white;
+  background-position: center right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  &.full-hero--overlay:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba($body, .7);
+    z-index: 10;
+  }
+
+  > div {
+    z-index: 20;
+    position: relative;
+  }
+
+  h2 {
+    @extend .h1;
+    color: $secondary;
+  }
+
+  .lead {
+    color: $white;
+  }
+}
+
+.full-hero__block-height {
+  padding-right: 0;
+  padding-left: 0;
+  height: 100vh;
+  min-height: 800px;
+}
+
+.full-hero__anchor {
+  display: block;
+  text-align: center;
+  z-index: 20;
+  width: 100%;
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
+}
+
+.full-hero__anchor-svg {
+  height: $spacer*.63;
+  width: auto;
+  @include media-breakpoint-up(md) {
+    height: $spacer;
+  }
+  @include media-breakpoint-up(xxxl) {
+    height: $spacer*2;
+  }
+}
+
+.full-page__content {
+  h2 {
+    color: $secondary;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      background: url(../images/services-list-icon.png) no-repeat 0 6px;
+      background-size: 16px 16px;
+      padding-left: 30px;
+    }
+  }
+}
+
+.full-page__content__with-bg {
+  background-size: cover;
+  background-position: center;
+  color: $white;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba($body, .7);
+    z-index: 10;
+  }
+
+  .lead {
+    color: $white;
+  }
+
+  .container {
+    position: relative;
+    z-index: 20;
+  }
+
+  h2 {
+    color: $secondary;
+  }
+}
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  Social Media ++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.contact__socialmedia-icon {
+  margin-right: 10px;
+}
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  Footer ++++++++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.footer__bar {
+  background-color: white;
+  font-size: 80%;
+}
+
+#footer-menu,
+.footer__bar-text,
+.footer__nav-link {
+  color: #7b7b7b;
+  margin-bottom: 0;
+}
+
+.footer__nav-link {
+  padding: 0;
+}
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  Forms +++++++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 2px solid $gray-300;
+  border-radius: 0;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+textarea {
+  resize: none;
+}
+
+.parsley-errors-list {
+  color: $red;
+  list-style: none;
+  padding: 0;
+  margin-top: .25rem;
+}
+
+.invalid-feedback {
+  color: $red;
+  list-style: none;
+  padding: 0;
+  margin-top: .25rem;
+}
+
+.error-list {
+  color: $red;
+  list-style: none;
+  padding: 0;
+  margin-top: .25rem;
+}
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++  Buttons +++++++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+button, .btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 0;
+  font-family: $font-family-serif;
+  text-transform: capitalize;
+  position: relative;
+  font-weight: 700;
+
+  @include media-breakpoint-down(xs) {
+    display: block;
+  }
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 125%;
+}
+
+.btn__svg-arrow {
+  margin-left: $spacer*.25;
+  transition: all 100ms ease-out;
+}
+
+.btn-clear {
+  @extend .btn;
+  position: relative;
+  padding-left: 0;
+  text-align: left;
+  padding-right: $spacer*.5;
+  @include media-breakpoint-up(xs) {
+    padding-left: 0;
+    padding-right: $spacer*.5;
+  }
+
+  &:hover {
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+
+    .btn__svg-arrow {
+      margin-left: $spacer*.5;
+    }
+  }
+
+  &:active {
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.btn-clear:focus, .btn-clear.focus {
+  box-shadow: none;
+}
+
+.btn-light {
+  background-color: darken(white, 4%);
+}
+
+.btn-link {
+
+}
+
+/* Employee Portal */
+
+.access-layout {
+  position: absolute;
+  display: table;
+  width: 100%;
+  height: 100%;
+
+  .logo {
+    width: 300px;
+  }
+
+  .access-layout__main {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .access-layout__content {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .access-layout__inner {
+    padding: 1.5rem;
+    border: 2px solid $gray-300;
+    border-radius: $border-radius;
+  }
+}
+
+.bulletin {
+  & + & {
+    border-top: 2px solid $gray-300;
+    margin-top: 2rem;
+    padding-top: 2rem;
+  }
+}
+
+/* Home */
+
+.page--home {
+  @include media-breakpoint-up(lg) {
+    .full-hero__wrapper {
+      background-size: cover;
+      background-position: center left;
+    }
+
+    .navbar {
+      position: absolute;
+    }
+  }
+}
+
+#hero-video {
+  z-index: 0;
+  width: auto;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Misc */
+
+.content-matrix {
+  ul, ol {
+    padding-left: 1.25rem;
+  }
+}
+
+.badge {
+  padding: 0.45em 0.75em;
+}
+
+.alert {
+  padding: 1rem 1.5rem;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.alert-warning {
+  border: 2px dashed $yellow;
+  color: rgba(#212529, .75);
+
+  .alert-heading {
+    color: #212529;
+  }
+}
+
+/* Carousel */
+
+.carousel {
+  padding-bottom: 3rem;
+
+  .carousel-inner {
+    margin: auto;
+  }
+
+  .carousel-control-prev, .carousel-control-next {
+    width: 15%;
+  }
+
+  .carousel-indicators li {
+    background-color: #222;
+  }
+}

@@ -1,0 +1,22 @@
+{% set category = bulletin.bulletinCategory.one() %}
+
+<div class="bulletin">
+    {% if bulletin.requiresReading and bulletin.id not in currentUser.readBulletins.ids() %}
+        <span class="badge badge-warning d-inline-block mb-2">Requires Reading</span>
+    {% endif %}
+    <h4 class="mb-1">{{ bulletin.title }}</h4>
+    <ul class="list-inline bulletin__meta text-muted text-sm">
+        <li class="list-inline-item">Posted on {{ bulletin.postDate.format('F j, Y') }}
+
+        {% if category %}
+            <li class="list-inline-item category-meta">
+                <a href="{{ category.getUrl() }}">
+                    <i class="fa fa-tag" aria-hidden="true"></i>
+                    {{ category.title }}
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+    <p>{{ bulletin.excerpt }}</p>
+    <a href="{{ bulletin.url }}" class="btn btn-primary mt-1">Continue Reading</a>
+</div>

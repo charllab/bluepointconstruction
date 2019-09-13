@@ -1,0 +1,15 @@
+{% extends '_layouts/access' %}
+
+{% import "_includes/forms" as forms %}
+
+{% block content %}
+    <h2 class="h4">Registration Successful</h2>
+    <p>Thanks for creating an account with {{siteName}}!
+    </p>
+    <p>
+        An administrator will activate your account soon and a confirmation email will be sent to you.
+    </p>
+    <p class="forgot-link mb-0 mt-4">
+        <a href="{{ url('login') }}">&larr; Back to login</a>
+    </p>
+{% endblock %}

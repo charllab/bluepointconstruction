@@ -1,0 +1,44 @@
+{
+    "linkSize": 100,
+    "pasteImages": false,
+    "pastePlainText": true,
+    "structure": true,
+    "buttons": [
+        "html",
+        "formatting",
+        "bold",
+        "italic",
+        "deleted",
+        "underline",
+        "unorderedlist",
+        "orderedlist",
+        "link",
+        "file",
+        "horizontalrule"
+    ],
+    "formattingAdd": {
+        "lead": {
+            "title": "Lead",
+            "api": "module.block.format",
+            "args": {
+                "tag": "p",
+                "class": "lead",
+                "type": "toggle"
+            }
+        },
+        "small": {
+            "title": "Small",
+            "api": "module.block.format",
+            "args": {
+                "tag": "small",
+                "class": "",
+                "type": "toggle"
+            }
+        }
+    },
+    "plugins": [
+        "video",
+        "alignment"
+    ],
+    "toolbarFixed": true
+}

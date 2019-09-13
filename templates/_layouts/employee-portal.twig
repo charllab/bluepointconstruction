@@ -1,0 +1,69 @@
+{% requireLogin %}
+
+{% extends '_layouts/site' %}
+
+{% import '_includes/macros' as macros %}
+
+{# Unread bulletins #}
+{% set readBulletins = currentUser.readBulletins.ids() %}
+{% set unreadBulletins = craft.entries.section('bulletins').requiresReading('1').id(['not'] | merge(readBulletins) ) %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid banner py-4 py-lg-8" style="background-image: url('{{ websiteOptions.headerBackgroundImage.one().getUrl() }}');"></div><!-- container-fluid -->
+
+        <div class="white-page__border-bottom">
+            <div class="container py-4">
+                <nav class="mb-4" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ siteUrl }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('employee-portal') }}">Employee Portal</a></li>
+                    </ol>
+                </nav>
+
+                <div class="row justify-content-between">
+
+                    <div class="col-lg-8 col-xxl-6">
+                        {% block innerContent %}
+                            {# Nothing to see here #}
+                        {% endblock %}
+                    </div><!-- col -->
+                    <div class="col-lg-4 mt-3 mt-lg-0">
+                        <div class="mb-3">
+                            <p>Logged in as {{ currentUser.email }}</p>
+
+                            <a href="{{ url('employee-portal/logs') }}" class="btn btn-primary mt-1 {{ currentUser.can('accessCp') ?: 'd-none' }}">
+                                Unread Bulletin Logs &rarr;
+                            </a>
+                        </div>
+
+                        <div class="mb-3">
+                            <h4>Unread Bulletins</h4>
+
+                            {% if unreadBulletins | length %}
+                                <div class="list-group">
+                                    {% for bulletin in unreadBulletins.all() %}
+                                        <a class="list-group-item" href="{{ bulletin.url }}">{{ bulletin.title }}</a>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                You have no unread bulletins.
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <h4>Your Account</h4>
+
+                            <div class="list-group">
+                                <a class="list-group-item" href="{{ url('employee-portal/edit-profile') }}">Edit Profile</a>
+                                <a class="list-group-item" href="{{ url('employee-portal/edit-password') }}">Edit Password</a>
+                                <a class="list-group-item" href="{{ url('logout') }}">Logout</a>
+                            </div>
+                        </div>
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- container -->
+
+        </div><!-- white-page__border-bottom -->
+    </main>
+{% endblock %}

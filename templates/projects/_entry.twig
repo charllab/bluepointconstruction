@@ -1,0 +1,45 @@
+{% extends '_layouts/site' %}
+
+{% import '_includes/macros' as macros %}
+
+{% set thumb = {
+    mode: 'crop',
+    width: 400,
+    height: 400,
+    position: 'top-center'
+} %}
+
+{% block content %}
+    <main class="white-page__border-bottom">
+        {% include '_includes/page-header' %}
+
+        <div class="container-fluid py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-xxxl-6">
+                        <p><a href="{{ url('projects') }}">&larr; Back to all projects</a></p>
+                        <h1 class="h2">{{ entry.title }}</h1>
+                        {{ entry.projectMetaInformation }}
+                        {% include '_includes/content-matrix' with { 'field' : entry.pageContent } %}
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- container -->
+
+            {% if entry.gallery %}
+                {% set itemClass = entry.gallery | length is odd ? 'col-md-4' : 'col-md-6 col-xxl-3' %}
+
+                <div class="container mt-2 mt-md-4 js-gallery">
+                    <div class="row justify-content-center">
+                        {% for image in entry.gallery.all() %}
+                            <div class="{{ itemClass }}">
+                                <a href="{{ image.getUrl('large') }}">
+                                    <img class="img-fluid w-100 py-2 px-md-2 py-md-3" src="{{ image.getUrl(thumb) }}" alt="{{ image.title }}">
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div><!-- container-fluid -->
+    </main>
+{% endblock %}

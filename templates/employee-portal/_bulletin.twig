@@ -1,0 +1,44 @@
+{% extends '_layouts/employee-portal' %}
+
+{% import '_includes/macros' as macros %}
+
+{% set category = entry.bulletinCategory.one() %}
+
+{% block innerContent %}
+    {% if entry.requiresReading and entry.id not in currentUser.readBulletins.ids() %}
+        <span class="badge badge-warning d-inline-block mb-2">Requires Reading</span>
+    {% endif %}
+
+    <h1 class="h3 mb-1">{{ entry.title }}</h1>
+
+    <ul class="list-inline bulletin__meta text-muted text-sm mb-3">
+        <li class="list-inline-item">Posted on {{ entry.postDate.format('F j, Y') }}
+
+        {% if category %}
+            <li class="list-inline-item category-meta">
+                <a href="{{ category.getUrl() }}">
+                    <i class="fa fa-tag" aria-hidden="true"></i>
+                    {{ category.title }}
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+
+    {% include '_includes/content-matrix' with { 'field' : entry.pageContent } %}
+
+    {% if entry.requiresReading and entry.id not in currentUser.readBulletins.ids() %}
+        <div class="alert alert-warning mt-4 mb-0" role="alert">
+            <h5 class="alert-heading"><i class="fas fa-eye"></i> This bulletin requires reading</h5>
+            <p>After you've finished reading please click the button below to mark it as read.</p>
+
+            <form method="post" class="mt-2" accept-charset="UTF-8">
+                {{ csrfInput() }}
+                <input type="hidden" name="action" value="toolkit/employee-portal/update-read-bulletins">
+                {{ redirectInput('employee-portal/bulletins/' ~ entry.slug) }}
+                <input type="hidden" name="fields[readBulletins]" value="{{ entry.id }}">
+
+                <input type="submit" class="btn btn-dark mt-1" value="Mark as read">
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends '_layouts/site' %}
+
+{% import '_includes/macros' as macros %}
+
+{% block content %}
+    <main class="white-page__border-bottom">
+        {% include '_includes/page-header' %}
+
+        <div class="container py-4">
+            <h1 class="color-dark mb-0">Featured Projects</h1>
+        </div><!-- container -->
+
+        <div class="container">
+            <div class="row justify-content-between">
+                {% for project in craft.entries.section('projects').all() %}
+                    <div class="col-lg-5 mb-3">
+                        <h2 class="h3">{{ project.title }}</h2>
+                        <p>{{ project.excerpt }}</p>
+                        {{ project.projectMetaInformation }}
+
+                        {% if project.gallery | length %}
+                            <a href="{{ project.url }}" class="btn btn-primary mb-3">
+                                More Info
+                            </a>
+                        {% endif %}
+                    </div><!-- col -->
+                {% endfor %}
+            </div><!-- row -->
+        </div>
+
+        <div class="container mt-2 mt-md-5">
+            <div class="row justify-content-between">
+                <div class="col-lg-6 mb-4">
+                    <h2>Previous Projects</h2>
+                    {{ entry.previousProjectsIntro }}
+
+                    <div class="row mt-3">
+                        {% for block in entry.previousProjects.all() %}
+                            <div class="col-sm-5 mb-3">
+                                {{ block.description }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div><!-- col -->
+
+                <div class="col-lg-5 px-0 py-5 py-lg-0 bg-img" style="background-image: url({{ entry.previousProjectsFeaturedImage.one().getUrl() }});"></div><!-- col -->
+            </div><!-- row -->
+        </div><!-- container-fluid -->
+
+    </main>
+
+
+{% endblock %}

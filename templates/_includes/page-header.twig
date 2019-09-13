@@ -1,0 +1,7 @@
+{% if entry.headerBackgroundImage | length %}
+    {% set image = entry.headerBackgroundImage.one() %}
+{% else %}
+    {% set image = websiteOptions.headerBackgroundImage.one() %}
+{% endif %}
+
+<div class="container-fluid banner py-4 py-lg-8" style="background-image: url('{{image.getUrl() }}'); background-position: {{ entry.backgroundAlignment }};"></div>

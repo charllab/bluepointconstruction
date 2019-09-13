@@ -1,0 +1,17 @@
+{% extends '_layouts/employee-portal' %}
+
+{% import '_includes/macros' as macros %}
+
+{# Bulletins #}
+{% set query = craft.entries.section('bulletins').limit(10).relatedTo(category) %}
+{% paginate query as pageInfo, bulletins %}
+
+{% block innerContent %}
+    <h1 class="h3 mb-3">Bulletins - {{ category }}</h1>
+
+    {% for bulletin in bulletins %}
+        {% include 'employee-portal/_bulletin-list-item' %}
+    {% endfor %}
+
+    {% include 'employee-portal/_pagination' %}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends '_layouts/site' %}
+
+{% import '_includes/macros' as macros %}
+
+{% block content %}
+    <main>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2572.0641355190382!2d-119.59820418428993!3d49.86003987939826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x698b2a7a49038115!2sBluepoint+Construction+Ltd!5e0!3m2!1sen!2sca!4v1563315842084!5m2!1sen!2sca" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+        <div class="white-page__border-bottom">
+            <div class="container py-4">
+                <div class="row justify-content-between">
+                    <div class="col-lg-7">
+                        <h1 class="h2">{{ entry.title }}</h1>
+
+                        {% include '_includes/content-matrix' with { 'field' : entry.pageContent } %}
+
+                        <div class="mt-4">
+                            {% include '_includes/freeform' with { 'formHandle' : 'contactForm' } %}
+                        </div>
+                    </div><!-- col -->
+                    <div class="col-lg-4 col-xxxl-3 order-lg-2 mt-3 mt-lg-0">
+                        <h3>Contact Info</h3>
+                        {{ entry.contactInformation }}
+
+                        <ul class="list-unstyled d-flex justify-content-start mb-1">
+                            {% for link in entry.websiteLinks.all() %}
+                                <li>
+                                    <a href="{{ link.urlLink }}" target="_blank" class="contact__socialmedia-icon">
+                                        <i class="{{ link.iconClass | default('fas fa-link') }} fa-2x"><span class="sr-only">{{ link.label }}</span></i>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- container -->
+        </div><!-- white-page__border-bottom -->
+    </main>
+{% endblock %}

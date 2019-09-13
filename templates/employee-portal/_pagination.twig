@@ -1,0 +1,15 @@
+{% if pageInfo.prevUrl or pageInfo.nextUrl %}
+<div class="mt-5 d-flex">
+    {% endif %}
+
+    {% if pageInfo.prevUrl %}
+        <a class="btn btn-dark btn-sm mr-auto" href="{{ pageInfo.prevUrl }}">Previous Page</a>
+    {% endif %}
+
+    {% if pageInfo.nextUrl %}
+        <a class="btn btn-dark btn-sm ml-auto" href="{{ pageInfo.nextUrl }}">Next Page</a>
+    {% endif %}
+
+    {% if pageInfo.prevUrl or pageInfo.nextUrl %}
+</div>
+{% endif %}

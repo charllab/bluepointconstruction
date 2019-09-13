@@ -1,0 +1,118 @@
+// Override variable defaults
+// Colors
+$primary: #0063A8; //blue
+$secondary: #E6B225; //yellow
+$tertiary: #208CD8; //lighter-blue
+$body: #2F2F2F;
+$body-tint: #555555;
+$line: #eee;
+
+$lead: #808080;
+$body-color: $body;
+$navbar-light-color: #363636;
+$navbar-light-active-color: $primary;
+$input-focus-border-color: $primary;
+
+$gfrom-btn: $secondary;
+$selection-color: #d9edf7;
+
+// Fonts
+$font-family-sans-serif: 'Open Sans', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+$font-family-serif: 'Montserrat', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+$headings-font-family: $font-family-serif;
+$font-family-base: $font-family-sans-serif;
+
+// Utilities
+$card-border-radius: .5rem;
+$border-radius: 0.5rem;
+
+// Breakpoints
+$grid-breakpoints: (
+  xxs: 0,
+  xs: 568px,
+  sm: 667.98px,
+  md: 767.98px,
+  lg: 991.98px,
+  xl: 1199.98px,
+  xxl: 1439.98px,
+  xxxl: 1679.98px,
+  xxxxl: 1959.98px
+);
+
+// Containers
+$container-max-widths: (
+  xxs: 567px,
+  xs: 568px,
+  sm: 667.98px,
+  md: 767.98px,
+  lg: 951.98px,
+  xl: 1159.98px,
+  xxl: 1399.98px,
+  xxxl: 1639.98px
+);
+
+// Spacer
+$spacer: 30px;
+$spacers: () !default;
+$spacers: map-merge((
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3),
+  6: ($spacer * 6),
+  7: ($spacer * 7),
+  8: ($spacer * 8),
+  9: ($spacer * 9),
+  10: ($spacer * 10),
+  11: ($spacer * 11),
+  12: ($spacer * 12),
+  13: ($spacer * 13),
+  14: ($spacer * 14),
+  15: ($spacer * 15)
+), $spacers);
+
+$carousel-control-color: #222;
+
+// Functions, variables, and mixins must come first
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// Default Bootstrap
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/code";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/tables";
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/transitions";
+@import "../../node_modules/bootstrap/scss/dropdown";
+@import "../../node_modules/bootstrap/scss/button-group";
+@import "../../node_modules/bootstrap/scss/input-group";
+@import "../../node_modules/bootstrap/scss/custom-forms";
+@import "../../node_modules/bootstrap/scss/nav";
+@import "../../node_modules/bootstrap/scss/navbar";
+@import "../../node_modules/bootstrap/scss/card";
+@import "../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../node_modules/bootstrap/scss/pagination";
+@import "../../node_modules/bootstrap/scss/badge";
+@import "../../node_modules/bootstrap/scss/jumbotron";
+@import "../../node_modules/bootstrap/scss/alert";
+@import "../../node_modules/bootstrap/scss/progress";
+@import "../../node_modules/bootstrap/scss/media";
+@import "../../node_modules/bootstrap/scss/list-group";
+@import "../../node_modules/bootstrap/scss/close";
+@import "../../node_modules/bootstrap/scss/modal";
+@import "../../node_modules/bootstrap/scss/tooltip";
+@import "../../node_modules/bootstrap/scss/popover";
+@import "../../node_modules/bootstrap/scss/carousel";
+@import "../../node_modules/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/print";

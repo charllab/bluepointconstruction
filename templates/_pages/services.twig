@@ -1,0 +1,23 @@
+{% extends '_layouts/site' %}
+
+{% import '_includes/macros' as macros %}
+
+{% block content %}
+    <main>
+        {% for block in entry.blockContent.all() %}
+            <div class="container-fluid white-border--bottom">
+                <div class="row bg-img" style="background-image: url({{ block.blockBackgroundImage.one().getUrl() }}); background-position: {{ block.backgroundAlignment }};">
+                    <div class="col-lg-6 {{ block.blockAlignment == 'right' ? 'offset-lg-6' }} background--tint">
+                        <div class="container full-page__content full-page__content--max-width ml-lg-0 mr-lg-auto">
+                            <div class="row">
+                                <div class="col-12 text-white offset-lg-1 col-lg-10 offset-xxxl-2 col-xxxl-7 py-3 py-lg-6">
+                                    {{ block.blockContent }}
+                                </div><!-- col -->
+                            </div><!-- row -->
+                        </div><!-- container -->
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- container-fluid -->
+        {% endfor %}
+    </main>
+{% endblock %}

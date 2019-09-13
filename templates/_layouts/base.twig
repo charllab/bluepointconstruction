@@ -1,0 +1,119 @@
+<!doctype html>
+<!--#if expr="$HTTP_COOKIE=/fonts\-loaded\=true/" -->
+<html lang="en" class="fonts-loaded">
+<!--#else -->
+<html lang="en">
+<!--#endif -->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <title>{{ siteName }}</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
+          integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ url('assets/style/style.css?v=@@hash') }}">
+</head>
+<body class="{{ bodyClass }}">
+{% block body %}
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white z-index-30">
+            <div class="container">
+                <div class="nav-logo">
+                    <h1 class="mb-0">
+                        <a rel="home" href="/" title="{{ siteName }}"
+                           itemprop="url">
+                            <img src="{{ siteUrl }}uploads/images/bluepoint-logo.png"
+                                 alt="{{ siteName }} - Logo"
+                                 class="navbar-main-logo img-fluid d-block"
+                            >
+                            <span class="sr-only">{{ siteName }}</span>
+                        </a>
+                    </h1>
+                </div>
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#mainnav"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div id="mainnav" class="collapse navbar-collapse">
+                    <ul id="main-menu" class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a title="More About {{ siteName }}" href="{{ siteUrl }}about" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a title="{{ siteName }} Project Portfolio" href="{{ siteUrl }}projects" class="nav-link">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a title="{{ siteName }} Services" href="{{ siteUrl }}services" class="nav-link">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a title="Contact {{ siteName }} Today" href="{{ siteUrl }}contact" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    {% block content %}
+        {# Nothing to see here #}
+    {% endblock %}
+
+    <footer>
+        <div class="footer__bar">
+            <div class="container py-3">
+                <div class="row">
+                    <div class="col-md-6 col-xxl-4 text-center text-md-left order-md-2 order-xxl-1">
+                        <p class="footer__bar-text">Copyright &copy; {{ 'now'|date('Y') }} {{ siteName }}</p>
+                    </div><!-- col -->
+                    <div class="col-xxl-4 text-center text-md-left text-xxl-center order-md-1 order-xxl-2">
+                        <ul id="footer-menu" class="list-inline list-unstyled mb-2 mt-2 mt-lg-0 mb-xxl-0">
+                            <li class="list-inline-item nav-item nav-item">
+                                <a title="Careers in {{ siteName }}"
+                                   href="{{ siteUrl }}careers"
+                                   class="nav-link footer__nav-link">Careers
+                                </a>
+                            </li>
+                            <li class="list-inline-item nav-item">
+                                <a title="{{ siteName }} Employee Login"
+                                   href="{{ siteUrl }}employee-portal"
+                                   class="nav-link footer__nav-link">
+                                    Employee Portal
+                                </a>
+                            </li>
+                            <li class="list-inline-item nav-item">
+                                <a title="{{ siteName }} Privacy Policy"
+                                   href="{{ siteUrl }}privacy-policy"
+                                   class="nav-link footer__nav-link">
+                                    Privacy Policy
+                                </a>
+                            </li>
+                            <li class="list-inline-item nav-item">
+                                <a title="{{ siteName }} Terms of Use"
+                                   href="{{ siteUrl }}terms-of-use"
+                                   class="nav-link footer__nav-link">
+                                    Terms of Use
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-xxl-4 text-center text-md-right order-3">
+                        <p class="footer__bar-text">Designed, Developed and Hosted by
+                            <a href="https://sproing.ca/"
+                               target="_blank"
+                               class="footer__bar-text">
+                                Sproing&nbsp;Creative
+                            </a>
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- container -->
+        </div><!-- container-fluid -->
+    </footer>
+{% endblock %}
+
+<script src="{{ url('assets/js/app-bundle.js?v=@@hash') }}"></script>
+</body>
+</html>
