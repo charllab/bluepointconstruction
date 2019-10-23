@@ -33,6 +33,8 @@ return [
             'subRight' => true,
         ],
 
+        'errorTemplatePrefix' => '_errors/',
+
         'postLoginRedirect' => 'employee-portal',
 
         'elevatedSessionDuration' => 86400,
@@ -67,27 +69,26 @@ return [
 
     // Dev environment settings
     'dev' => [
-        // Dev Mode (see https://craftcms.com/support/dev-mode)
         'devMode' => true,
 
         'testToEmailAddress' => getenv('TEST_TO_EMAIL_ADDRESS'),
 
         'aliases' => [
-            '@assetBasePath' => CRAFT_BASE_PATH . '/public/uploads'
+            '@assetBasePath' => CRAFT_BASE_PATH . '/public_html/uploads'
         ],
     ],
 
     // Staging environment settings
     'staging' => [
         'aliases' => [
-            '@assetBasePath' => CRAFT_BASE_PATH . '/public_html/uploads',
+            '@assetBasePath' => CRAFT_BASE_PATH . '/uploads',
         ],
     ],
 
     // Production environment settings
     'production' => [
         'aliases' => [
-            '@assetBasePath' => CRAFT_BASE_PATH . '/public_html/uploads',
+            '@assetBasePath' => CRAFT_BASE_PATH . '/uploads',
         ],
     ],
 ];
