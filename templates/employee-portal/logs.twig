@@ -15,11 +15,11 @@
 
     {% if bulletins | length %}
         {% for bulletin in bulletins.all() %}
-            {% set usersRead = craft.users.group('employees').relatedTo(bulletin).all() %}
+            {% set usersRead = craft.users.group('employees').relatedTo(bulletin).ids() %}
             {% set usersNotRead = craft.users.group('employees').id(['not'] | merge(usersRead) ) %}
 
             {% if usersNotRead | length %}
-                <div class="bulletin">
+                <div class="bulletin mb-3">
                     <h4 class="mb-1">{{ bulletin.title }}</h4>
 
                     <ul class="list-inline bulletin__meta text-muted text-sm">
