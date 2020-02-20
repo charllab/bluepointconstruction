@@ -11,8 +11,19 @@
         <div class="white-page__border-bottom">
             <div class="container py-4">
                 <div class="row justify-content-center">
-                    <div class="col-sm-10 col-xl-8 col-xxl-6">
+                    <div class="col-sm-10 col-xl-8 col-xxl-6 mb-3">
                         <h1 class="h2">{{ entry.title }}</h1>
+                        <a class="position-relative js-open-video d-block" href="https://vimeo.com/392561397">
+                            <img class="img-fluid" src="{{ siteUrl }}assets/images/career-video.jpg" alt="{{ siteName }} - Career Video Thumbnail"/>
+                            <div class="promoVideoBtn d-flex justify-content-center align-items-center">
+                                <div class="btn btn-lg btn-secondary">Watch Video <i class="far fa-play-circle ml-1"></i></div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-sm-10 col-xl-8 col-xxl-6">
                         {% include '_includes/content-matrix' with { 'field' : entry.pageContent } %}
 
                         <div class="py-2"></div>
